@@ -813,7 +813,7 @@ a {
   transition: 0.3s all !important;
 }
 .cid-428824 .navbar-nav .nav-item .nav-link:hover {
-  background-color: rgba(27, 31, 10, 0.04);
+  background-color: rgba(27, 31, 10, 0.06);
 }
 .cid-428824 .navbar-nav .open .nav-link::after {
   transform: rotate(180deg);
@@ -873,7 +873,7 @@ a {
   height: 90px;
   padding: 0.5rem 0.6rem;
   flex-wrap: nowrap;
-  background: rgba(255, 255, 255, 0.8) !important;
+  background: rgba(255, 255, 255, 0.4) !important;
   left: 0;
   right: 0;
   -webkit-box-pack: justify;
