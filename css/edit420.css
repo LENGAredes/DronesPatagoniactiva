@@ -813,7 +813,7 @@ a {
   transition: 0.3s all !important;
 }
 .cid-428824 .navbar-nav .nav-item .nav-link:hover {
-  background-color: rgba(27, 31, 10, 0.06);
+  background-color: rgba(27, 31, 10, 0.04);
 }
 .cid-428824 .navbar-nav .open .nav-link::after {
   transform: rotate(180deg);
