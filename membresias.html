@@ -530,151 +530,160 @@
   <!-- [Contenido previo de los planes se mantiene igual] -->
 </section>
 
-<!-- Nueva sección: Desglose de Precios Individuales -->
-<section class="price-breakdown">
+<section class="price-breakdown py-4 bg-light">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-lg-10">
-        <h3 class="text-center mb-5" style="font-weight: 700; color: #212529;">¿Cuánto ahorras con cada membresía?</h3>
+        <h3 class="text-center mb-4 fw-bold text-dark">¿Cuánto ahorras con cada membresía?</h3>
         
-        <!-- Interruptor para mostrar precios con/sin descuento -->
+        <!-- Toggle de descuento -->
         <div class="text-center mb-4">
           <div class="form-check form-switch d-inline-block">
             <input class="form-check-input" type="checkbox" id="priceToggle" checked>
-            <label class="form-check-label" for="priceToggle">Promocion 50% de descuento vigente hasta 30/06 inclusive</label>
+            <label class="form-check-label fw-medium" for="priceToggle">Promoción 50% de descuento vigente hasta 30/06</label>
           </div>
         </div>
         
-        <div class="comparison-table">
-          <table class="table">
-            <thead>
+        <!-- Tabla responsive -->
+        <div class="table-responsive rounded-3 shadow-sm">
+          <table class="table table-bordered mb-0">
+            <thead class="table-dark">
               <tr>
-                <th scope="col">Servicio por unidad</th>
-                <th scope="col" class="text-end">Precio Individual <span class="with-discount">(50% off)</span><span class="without-discount" style="display:none;">(precio regular)</span></th>
-                <th scope="col" class="text-center">Básica <span class="with-discount">(15% off)</span><span class="without-discount" style="display:none;">(15% off sobre precio regular)</span></th>
-                <th scope="col" class="text-center">Profesional <span class="with-discount">(25% off)</span><span class="without-discount" style="display:none;">(25% off sobre precio regular)</span></th>
-                <th scope="col" class="text-center">Estratega de contenido <span class="with-discount"></span><span class="without-discount" style="display:none;"></span></th>
+                <th scope="col" class="w-25">Servicio por unidad</th>
+                <th scope="col" class="text-end w-15">Precio Individual <span class="with-discount">(50% off)</span><span class="without-discount d-none">(precio regular)</span></th>
+                <th scope="col" class="text-center w-15">Básica <span class="with-discount">(15% off)</span><span class="without-discount d-none">(15% off)</span></th>
+                <th scope="col" class="text-center w-15">Profesional <span class="with-discount">(25% off)</span><span class="without-discount d-none">(25% off)</span></th>
+                <th scope="col" class="text-center w-15">Estratega</th>
               </tr>
             </thead>
             <tbody>
+              <!-- Fila 1 -->
               <tr>
                 <td>Sesión de fotografía/video (1hrs)</td>
                 <td class="text-end">
                   <span class="with-discount">$30,000</span>
-                  <span class="without-discount" style="display:none;">$60,000</span>
+                  <span class="without-discount d-none">$60,000</span>
                 </td>
                 <td class="text-center savings-cell">
-                  <span class="with-discount">$25,500<i><small>x2</small></i></span>
-                  <span class="without-discount" style="display:none;">$51,000<i><small>x2</small></i></span>
+                  <span class="with-discount">$25,500<small class="text-muted">×2</small></span>
+                  <span class="without-discount d-none">$51,000<small class="text-muted">×2</small></span>
                 </td>
                 <td class="text-center savings-cell">
-                  <span class="with-discount">$22,500<i><small>x3</small></i></span>
-                  <span class="without-discount" style="display:none;">$45,000<i><small>x3</small></i></span>
+                  <span class="with-discount">$22,500<small class="text-muted">×3</small></span>
+                  <span class="without-discount d-none">$45,000<small class="text-muted">×3</small></span>
                 </td>
-                <td class="text-center savings-cell">
-                  <span class="with-discount">-</span>
-                  <span class="without-discount" style="display:none;">-</span>
-                </td>
+                <td class="text-center">-</td>
               </tr>
+              
+              <!-- Fila 2 -->
               <tr>
                 <td>Tour Virtual 360°</td>
                 <td class="text-end">
                   <span class="with-discount">$20,000</span>
-                  <span class="without-discount" style="display:none;">$40,000</span>
+                  <span class="without-discount d-none">$40,000</span>
                 </td>
-                <td class="text-center">
-                  <span class="with-discount">-</span>
-                  <span class="without-discount" style="display:none;">-</span>
-                </td>
+                <td class="text-center">-</td>
                 <td class="text-center savings-cell">
                   <span class="with-discount">$15,000</span>
-                  <span class="without-discount" style="display:none;">$30,000</span>
+                  <span class="without-discount d-none">$30,000</span>
                 </td>
-                <td class="text-center savings-cell">
-                  <span class="with-discount">-</span>
-                  <span class="without-discount" style="display:none;">-</span>
-                </td>
+                <td class="text-center">-</td>
               </tr>
-              <tr style="background-color: #EDEDED;">
+              
+              <!-- Fila 3 -->
+              <tr class="bg-light">
                 <td>Edición</td>
                 <td class="text-end">
                   <span class="with-discount">$15,000</span>
-                  <span class="without-discount" style="display:none;">$30,000</span>
+                  <span class="without-discount d-none">$30,000</span>
                 </td>
                 <td class="text-center">
-                  <span class="with-discount">$12,750<i><small>x2</small></i></span>
-                  <span class="without-discount" style="display:none;">$25,500<i><small>x2</small></i></span>
+                  <span class="with-discount">$12,750<small class="text-muted">×2</small></span>
+                  <span class="without-discount d-none">$25,500<small class="text-muted">×2</small></span>
                 </td>
                 <td class="text-center savings-cell">
-                  <span class="with-discount">$11,250<i><small>x3</small></i></span>
-                  <span class="without-discount" style="display:none;">$22,500<i><small>x3</small></i></span>
+                  <span class="with-discount">$11,250<small class="text-muted">×3</small></span>
+                  <span class="without-discount d-none">$22,500<small class="text-muted">×3</small></span>
                 </td>
-                <td class="text-center savings-cell">
-                  <span class="with-discount">-</span>
-                  <span class="without-discount" style="display:none;">-</span>
-                </td>
+                <td class="text-center">-</td>
               </tr>
-
-<tr class="total-row">
-                <td><strong>Membresia mensual <u>sin</u> edición</strong></td>
+              
+              <!-- Total sin edición -->
+              <tr class="total-row">
+                <td><strong>Membresía mensual <u>sin</u> edición</strong></td>
                 <td class="text-end"><strong>-</strong></td>
                 <td class="text-center savings-cell">
                   <span class="with-discount"><strong>$51,000</strong></span>
-                  <span class="without-discount" style="display:none;"><strong>$102,000</strong></span>
+                  <span class="without-discount d-none"><strong>$102,000</strong></span>
                 </td>
                 <td class="text-center savings-cell">
                   <span class="with-discount"><strong>$82,500</strong></span>
-                  <span class="without-discount" style="display:none;"><strong>$165,000</strong></span>
+                  <span class="without-discount d-none"><strong>$165,000</strong></span>
                 </td>
-                <td class="text-center savings-cell">
-                  <span class="with-discount"><strong>-</strong></span>
-                  <span class="without-discount" style="display:none;"><strong>-</strong></span>
-                </td>
+                <td class="text-center">-</td>
               </tr>
-
-<tr class="total-row" style="background-color: #EDEDED;">
-                <td><strong>Membresia mensual <u>con</u> edición</strong></td>
+              
+              <!-- Total con edición -->
+              <tr class="total-row bg-light">
+                <td><strong>Membresía mensual <u>con</u> edición</strong></td>
                 <td class="text-end"><strong>-</strong></td>
                 <td class="text-center savings-cell">
                   <span class="with-discount"><strong>$76,500</strong></span>
-                  <span class="without-discount" style="display:none;"><strong>$153,000</strong></span>
+                  <span class="without-discount d-none"><strong>$153,000</strong></span>
                 </td>
                 <td class="text-center savings-cell">
                   <span class="with-discount"><strong>$116,250</strong></span>
-                  <span class="without-discount" style="display:none;"><strong>$232,500</strong></span>
+                  <span class="without-discount d-none"><strong>$232,500</strong></span>
                 </td>
                 <td class="text-center savings-cell">
                   <span class="with-discount"><strong>$190,000</strong></span>
-                  <span class="without-discount" style="display:none;"><strong>$380,000</strong></span>
+                  <span class="without-discount d-none"><strong>$380,000</strong></span>
                 </td>
               </tr>
-
-              <tr class="savings-row">
-                <td colspan="5" class="text-left">
-                  <div class="savings-msg">
+              
+              <!-- Mensajes de ahorro -->
+              <tr>
+                <td colspan="5" class="p-3">
+                  <div class="savings-msg mb-2">
                     <span class="badge bg-success">¡AHORRO MENSUAL!</span> 
-                    Membresia Básica: 15% | Membresia Profesional: 25% + beneficios exclusivos
+                    Membresía Básica: 15% | Membresía Profesional: 25% + beneficios exclusivos
                   </div>
                   <div class="savings-msg">
                     <span class="badge bg-primary">¡COLABORA CON NOSOTROS!</span> 
-                    15% de descuento acumulable con otros descuentos por membresias
+                    15% de descuento acumulable con otros descuentos por membresías
                   </div>
                 </td>
               </tr>
-
-
             </tbody>
           </table>
-          
-          <div class="disclaimer mt-4">
-            <p class="small text-muted">* Precios <strong>de referencia</strong> enero de 2025.</p>
-            <p class="small text-muted">* consulta nuestros <strong>descuentos</strong> por colaboraciones.</p>
-          </div>
+        </div>
+        
+        <!-- Notas al pie -->
+        <div class="disclaimer mt-3 text-center">
+          <small class="text-muted"><strong>Desliza horizontalmente</strong> para ver toda la tabla en móviles</small><br><br>
+          <p class="small text-muted mb-1">* Precios <strong>de referencia</strong> enero 2025</p>
+          <p class="small text-muted">* Consulta nuestros <strong>descuentos</strong> por colaboraciones</p>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Script para el toggle de precios -->
+<script>
+document.getElementById('priceToggle').addEventListener('change', function() {
+  const showDiscount = this.checked;
+  
+  // Alternar visibilidad de precios
+  document.querySelectorAll('.with-discount').forEach(el => {
+    el.classList.toggle('d-none', !showDiscount);
+  });
+  
+  document.querySelectorAll('.without-discount').forEach(el => {
+    el.classList.toggle('d-none', showDiscount);
+  });
+});
+</script>
 
 <script>
 document.getElementById('priceToggle').addEventListener('change', function() {
