@@ -1940,3 +1940,20 @@ a {
     text-align: center;
   }
 }
+
+  /* ESTILOS PREMIUM (DORADO) - FIJOS PARA TODOS LOS DISPOSITIVOS */
+  .pricing-card.premium {
+    border: 2px solid #d4af37 !important;
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+  }
+  
+  .premium-badge {
+    background: linear-gradient(135deg, #d4af37, #f9e090) !important;
+    color: #000 !important;
+    border: none !important;
+  }
+  
+  .premium .card-header {
+    background-color: #000 !important;
+    color: white !important;
+  }
