@@ -25,13 +25,14 @@
     /* ========================================= */
 
     /* 1. El contenedor del Slider se queda fijo atrás */
+    /* Usamos z-index 0 para que no tape el menú pero sea la base */
     .hero-fixed-background {
-        position: fixed; /* Se queda pegado a la pantalla */
+        position: fixed; 
         top: 0;
         left: 0;
         width: 100%;
-        height: 100vh; /* Ocupa toda la altura */
-        z-index: -1; /* Se pone DETRÁS de todo */
+        height: 100vh; 
+        z-index: 0; 
         overflow: hidden;
     }
 
@@ -44,19 +45,48 @@
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
-        /* NOTA: Aquí ya NO usamos fixed, porque el contenedor padre ya es fixed. */
+    }
+    
+    /* Capa oscura para que el texto blanco se lea bien */
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4); 
+        z-index: 1;
     }
 
-    /* 2. El resto de la web "pasa por encima" */
+    /* 2. Capa del Texto y Botones (RESTAURADA Y CLIQUEABLE) */
+    .hero-content-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10; /* Encima de las fotos y el overlay */
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+    }
+
+    .hero-content-layer .content-wrap {
+        text-align: center;
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    /* 3. El resto de la web "pasa por encima" */
     .main-content-wrapper {
         position: relative;
-        z-index: 10; /* Por encima del slider */
+        z-index: 10; /* Por encima del slider fixed (que es 0) */
         margin-top: 100vh; /* Empieza DESPUÉS de la altura de la pantalla */
-        background-color: #ffffff; /* Fondo blanco sólido para tapar la foto al subir */
-        box-shadow: 0 -10px 30px rgba(0,0,0,0.1); /* Sombra estética en el borde superior */
+        background-color: #ffffff; /* Fondo blanco sólido para tapar la foto */
+        box-shadow: 0 -10px 30px rgba(0,0,0,0.1); 
     }
 
-    /* Puntos (Dots) Minimalistas */
+    /* Puntos (Dots) */
     .carousel-indicators {
         bottom: 30px;
         z-index: 20;
@@ -72,6 +102,7 @@
         border: none;
         margin: 0 8px;
         box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        cursor: pointer;
     }
 
     .carousel-indicators .active {
@@ -80,7 +111,7 @@
         background-color: #fff;
     }
 
-    /* --- ESTILOS ORIGINALES --- */
+    /* --- ESTILOS ORIGINALES RESTAURADOS --- */
     .service-features-list { list-style: none; padding-left: 0; margin-top: 15px; }
     .service-features-list li { position: relative; padding-left: 25px; margin-bottom: 8px; }
     .service-features-list li:before { content: "✓"; color: #28a745; position: absolute; left: 0; font-weight: bold; }
@@ -89,7 +120,11 @@
     .testimonial-item { margin-bottom: 30px; border: 1px solid #eee; border-radius: 8px; padding: 20px; transition: transform 0.3s ease; }
     .testimonial-item:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
     .testimonial-cta { margin-top: 15px; text-align: center; }
-    .navbar.navbar-dropdown { z-index: 1000; position: fixed; width: 100%; top: 0; background-color: rgba(255,255,255,0.95); box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    /* Navbar fixed siempre visible */
+    .navbar.navbar-dropdown { z-index: 1001; position: fixed; width: 100%; top: 0; background-color: rgba(255,255,255,0.95); box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .service-card { height: 100%; display: flex; flex-direction: column; transition: transform 0.3s ease; }
+    .service-card:hover { transform: translateY(-10px); }
+    .service-card .card-body { flex-grow: 1; }
   </style>
 </head>
 <body>
@@ -144,6 +179,7 @@
 </section>
 
 <div class="hero-fixed-background">
+    
     <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel" data-bs-ride="carousel" data-interval="4000" data-bs-interval="4000">
         
         <ol class="carousel-indicators">
@@ -153,9 +189,32 @@
         </ol>
 
         <div class="carousel-inner">
-            <div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1920&q=80');"></div>
-            <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80');"></div>
-            <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1506947411487-a56738267384?auto=format&fit=crop&w=1920&q=80');"></div>
+            <div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1920&q=80');">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80');">
+                 <div class="hero-overlay"></div>
+            </div>
+            <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1506947411487-a56738267384?auto=format&fit=crop&w=1920&q=80');">
+                 <div class="hero-overlay"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-content-layer container-fluid">
+        <div class="row w-100">
+            <div class="content-wrap col-12 col-md-12">
+                <h1 class="drone-section-title drone-fonts-style drone-white mb-4 display-1">
+                    <strong>Patagoniactiva</strong>
+                </h1>
+                
+                <p class="drone-fonts-style drone-text drone-white mb-4 display-7">Transforma la forma de mostrar tus proyectos o propiedades con nueva tecnología</p>
+                
+                <div class="drone-section-btn">
+                    <a class="btn btn-white-outline display-7" href="#pricing-cards-1-420042">Ver Servicios</a>
+                    <a class="btn btn-white display-7 ml-3" href="#quienes-somos">Conócenos</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -509,9 +568,12 @@
         </div>
     </section>
 
-    <section class="spacer-parallax" style="height: 50vh; background-image: url('https://images.unsplash.com/photo-1517175294522-861c8a16db2c?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; background-attachment: fixed;">
+    <section data-bs-version="5.1" class="image02 cid-425524 drone-fullscreen drone-parallax-background" id="video-parallax-section" data-bg-video="https://www.youtube.com/embed/xJekP9d8Q8c?autoplay=1&loop=1&mute=1&start=70&playlist=xJekP9d8Q8c&controls=0&showinfo=0&autohide=1&allowfullscreen=true&mode=transparent">
+        <div class="drone-overlay" style="opacity: 0.5; background-color: rgb(0, 0, 0);"></div>
+        <div class="container">
+            <div class="row"></div>
+        </div>
     </section>
-
     <section data-bs-version="5.1" class="gallery10 cid-uqi6GLb4IU" id="features-61-uqi6GLb4IU">
     <div class="container-fluid">
 
