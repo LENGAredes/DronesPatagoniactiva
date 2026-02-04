@@ -20,35 +20,40 @@
   <link rel="stylesheet" href="css/edit420.css" type="text/css">
 
 <style>
-    /* --- ESTILOS DEL SLIDER MINIMALISTA (PARALLAX CSS) --- */
+    /* ========================================= */
+    /* ESTILOS CORREGIDOS DEL SLIDER (SOLUCIÓN) */
+    /* ========================================= */
+    
     .hero-slider-section {
         position: relative;
         padding: 0;
-        background-color: #000;
+        background-color: #000; /* Fondo de seguridad */
+        overflow: hidden;
     }
 
-    /* Ocupa toda la pantalla */
-    #heroCarousel, .carousel-inner {
-        height: 100vh; 
+    /* FORZAR ALTURA: Esto evita que se vea negro/vacio */
+    #heroCarousel, .carousel-inner, .carousel-item {
+        height: 100vh !important; /* Ocupa toda la pantalla obligatoriamente */
         min-height: 600px;
     }
 
     .carousel-item {
-        height: 100%;
         width: 100%;
-        background-repeat: no-repeat;
+        /* Configuración de imagen de fondo */
         background-size: cover;
         background-position: center center;
-        /* EFECTO PARALLAX: La imagen se queda fija al hacer scroll */
+        background-repeat: no-repeat;
+        
+        /* EFECTO PARALLAX ACTIVADO */
         background-attachment: fixed; 
-        position: relative;
     }
 
-    /* Ajuste para móviles (el fixed a veces falla en iOS/Android) */
+    /* FIX PARA CELULARES (iOS/Android): 
+       Desactiva parallax en movil para evitar errores visuales o pantalla negra */
     @media (max-width: 768px) {
         .carousel-item {
-            background-attachment: scroll;
-            background-position: center center;
+            background-attachment: scroll !important;
+            background-position: center center !important;
         }
     }
 
@@ -58,7 +63,8 @@
         z-index: 20;
     }
     
-    .carousel-indicators [data-bs-target] {
+    .carousel-indicators [data-bs-target], 
+    .carousel-indicators li { /* Soporte para versiones viejas de bootstrap */
         width: 12px;
         height: 12px;
         border-radius: 50%;
@@ -66,8 +72,7 @@
         opacity: 0.6;
         border: none;
         margin: 0 8px;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     }
 
     .carousel-indicators .active {
@@ -76,95 +81,38 @@
         background-color: #fff;
     }
 
-    /* --- ESTILOS DE LA SECCIÓN SEPARADORA INFERIOR --- */
+    /* ESTILOS DEL SEPARADOR INFERIOR */
     .spacer-parallax {
-        height: 50vh; /* Altura de media pantalla */
+        width: 100%;
+        height: 60vh; /* Altura generosa */
         min-height: 400px;
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         position: relative;
+        background-color: #333;
+    }
+    
+    @media (max-width: 768px) {
+        .spacer-parallax {
+            background-attachment: scroll !important;
+        }
     }
 
-    /* --- ESTILOS ORIGINALES --- */
-    .service-features-list {
-        list-style: none;
-        padding-left: 0;
-        margin-top: 15px;
-    }
-    
-    .service-features-list li {
-        position: relative;
-        padding-left: 25px;
-        margin-bottom: 8px;
-    }
-    
-    .service-features-list li:before {
-        content: "✓";
-        color: #28a745;
-        position: absolute;
-        left: 0;
-        font-weight: bold;
-    }
-    
-    .gallery-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(0,0,0,0.7);
-        color: white;
-        padding: 15px;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-    
-    .grid-item:hover .gallery-overlay {
-        opacity: 1;
-    }
-    
-    .testimonial-item {
-        margin-bottom: 30px;
-        border: 1px solid #eee;
-        border-radius: 8px;
-        padding: 20px;
-        transition: transform 0.3s ease;
-    }
-    
-    .testimonial-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    
-    .testimonial-cta {
-        margin-top: 15px;
-        text-align: center;
-    }
-    
-    .navbar.navbar-dropdown {
-        z-index: 1000;
-        position: fixed;
-        width: 100%;
-        top: 0;
-        background-color: rgba(255,255,255,0.95);
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    
-    .service-card {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        transition: transform 0.3s ease;
-    }
-    
-    .service-card:hover {
-        transform: translateY(-10px);
-    }
-    
-    .service-card .card-body {
-        flex-grow: 1;
-    }
+    /* --- ESTILOS ORIGINALES DE TU TEMA --- */
+    .service-features-list { list-style: none; padding-left: 0; margin-top: 15px; }
+    .service-features-list li { position: relative; padding-left: 25px; margin-bottom: 8px; }
+    .service-features-list li:before { content: "✓"; color: #28a745; position: absolute; left: 0; font-weight: bold; }
+    .gallery-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.7); color: white; padding: 15px; opacity: 0; transition: opacity 0.3s ease; }
+    .grid-item:hover .gallery-overlay { opacity: 1; }
+    .testimonial-item { margin-bottom: 30px; border: 1px solid #eee; border-radius: 8px; padding: 20px; transition: transform 0.3s ease; }
+    .testimonial-item:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    .testimonial-cta { margin-top: 15px; text-align: center; }
+    .navbar.navbar-dropdown { z-index: 1000; position: fixed; width: 100%; top: 0; background-color: rgba(255,255,255,0.95); box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .service-card { height: 100%; display: flex; flex-direction: column; transition: transform 0.3s ease; }
+    .service-card:hover { transform: translateY(-10px); }
+    .service-card .card-body { flex-grow: 1; }
   </style>
 </head>
 <body>
@@ -219,34 +167,28 @@
 
 <section class="hero-slider-section cid-429924" id="home-slider">
     
-    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel" data-bs-ride="carousel" data-interval="4000" data-bs-interval="4000">
         
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
+        <ol class="carousel-indicators">
+            <li data-target="#heroCarousel" data-bs-target="#heroCarousel" data-slide-to="0" data-bs-slide-to="0" class="active"></li>
+            <li data-target="#heroCarousel" data-bs-target="#heroCarousel" data-slide-to="1" data-bs-slide-to="1"></li>
+            <li data-target="#heroCarousel" data-bs-target="#heroCarousel" data-slide-to="2" data-bs-slide-to="2"></li>
+        </ol>
 
         <div class="carousel-inner">
             
-            <div class="carousel-item active mbr-parallax-background">
-                <img class="jarallax-img" src="https://res.cloudinary.com/demo/image/fetch/f_auto,q_auto/https://images.unsplash.com/photo-1500382017468-9049fed747ef" alt="Paisaje Patagonia">
-                <div class="hero-overlay"></div>
+            <div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1920&q=80');">
             </div>
 
-            <div class="carousel-item mbr-parallax-background">
-                <img class="jarallax-img" src="https://res.cloudinary.com/demo/image/fetch/f_auto,q_auto/https://images.unsplash.com/photo-1600596542815-2a4b9714e6fd" alt="Propiedades Exclusivas">
-                <div class="hero-overlay"></div>
+            <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80');">
             </div>
 
-            <div class="carousel-item mbr-parallax-background">
-                <img class="jarallax-img" src="https://res.cloudinary.com/demo/image/fetch/f_auto,q_auto/https://images.unsplash.com/photo-1473968512647-3e447244af8f" alt="Tecnología de Punta">
-                <div class="hero-overlay"></div>
+            <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1506947411487-a56738267384?auto=format&fit=crop&w=1920&q=80');">
             </div>
 
         </div>
     </div>
-    </section>
+</section>
 <section data-bs-version="5.1" class="features19 cid-42101024" id="features-27-42101024">
     <div class="container">
         <div class="row justify-content-center">
