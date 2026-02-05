@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="images/logo-1.png" type="image/x-icon">
+  <meta name="description" content="Te ofrecemos la tranquilidad de tener un equipo de producción constante. Nos podemos encargar de todo: capturas aéreas, recorridos de interior y Tours Virtuales 360°">
+  <title>Drones Patagoniactiva</title>
+  
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min420.css?rnd=1728094463213">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap-grid.min420.css?rnd=1728094463213">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap-reboot.min420.css?rnd=1728094463213">
+  <link rel="stylesheet" href="parallax/jarallax420.css">
+  <link rel="stylesheet" href="dropdown/css/styles.css?">
+  <link rel="stylesheet" href="socicon/css/style420.css">
+  <link rel="stylesheet" href="theme/css/style420.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap&display=swap"></noscript>
+  <link rel="stylesheet" href="css/edit420.css" type="text/css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<style>
+    /* --- ESTILOS DEL SLIDER DE INICIO CON PARALLAX --- */
+    .hero-slider-section {
+        position: relative;
+        height: 100vh; /* Ocupa toda la pantalla */
+        min-height: 600px;
+        overflow: hidden;
+        padding: 0;
+        background-color: #000;
+    }
+
+    /* El carrusel ocupa todo el alto */
+    #heroCarousel, .carousel-inner, .carousel-item {
+        height: 100%;
+        width: 100%;
+        /* Importante para que el parallax funcione dentro */
+        position: relative;
+        z-index: 0; 
+    }
+    
+    /* Estilos para la imagen parallax dentro del carrusel */
+    .carousel-item .jarallax-img {
+        object-fit: cover;
+        width: 100%;
+        /* Altura automática para permitir que jarallax la haga más alta y scrollee */
+        height: auto !important; 
+        min-height: 100%;
+    }
+
+
+    /* Capa oscura sobre las fotos para que se lea el texto */
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4); /* 40% de oscuridad */
+        z-index: 1;
+    }
+
+    /* Contenedor del Texto (Título y botones) */
+    .hero-content-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10; /* Por encima de las fotos y el overlay */
+        display: flex;
+        align-items: center; /* Centrado vertical */
+        justify-content: center;
+        pointer-events: none;
+    }
+
+    .hero-content-layer .content-wrap {
+        pointer-events: auto;
+        text-align: center;
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    /* Puntos (Dots) Minimalistas */
+    .carousel-indicators {
+        bottom: 40px;
+        z-index: 20;
+    }
+
+    .carousel-indicators [data-bs-target] {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #fff;
+        opacity: 0.5;
+        border: none;
+        margin: 0 8px;
+        transition: all 0.3s ease;
+    }
+
+    .carousel-indicators .active {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+
+    /* --- ESTILOS ORIGINALES --- */
+    .service-features-list {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 15px;
+    }
+    
+    .service-features-list li {
+        position: relative;
+        padding-left: 25px;
+        margin-bottom: 8px;
+    }
+    
+    .service-features-list li:before {
+        content: "✓";
+        color: #28a745;
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+    }
+    
+    .testimonial-item {
+        margin-bottom: 30px;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        padding: 20px;
+        transition: transform 0.3s ease;
+    }
+    
+    .testimonial-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .testimonial-cta {
+        margin-top: 15px;
+        text-align: center;
+    }
+    
+    .navbar.navbar-dropdown {
+        z-index: 1000;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        background-color: rgba(255,255,255,0.95);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .service-card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease;
+    }
+    
+    .service-card:hover {
+        transform: translateY(-10px);
+    }
+    
+    .service-card .card-body {
+        flex-grow: 1;
+    }
+
+    /* --- NUEVOS ESTILOS PARA LA GALERIA SWIPER --- */
+    .swiper-gallery-custom {
+        padding-bottom: 30px;
+    }
+    
+    .swiper-slide {
+        height: 450px; /* Altura de las tarjetas */
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        cursor: pointer;
+    }
+
+    .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .swiper-slide:hover img {
+        transform: scale(1.1); /* Zoom suave al pasar el mouse */
+    }
+
+    /* Degradado y Texto sobre la imagen */
+    .swiper-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50%; /* Degradado solo en la mitad inferior */
+        background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 25px;
+        color: white;
+        pointer-events: none;
+    }
+
+    .swiper-overlay h5 {
+        font-family: 'Inter Tight', sans-serif;
+        font-weight: 700;
+        margin-bottom: 5px;
+        transform: translateY(0);
+        transition: transform 0.3s ease;
+    }
+
+    .swiper-overlay p {
+        font-family: 'Inter Tight', sans-serif;
+        font-size: 0.9rem;
+        opacity: 0.9;
+        margin: 0;
+    }
+
+    /* Ajustes para los botones de navegación del Swiper */
+    .swiper-button-next, .swiper-button-prev {
+        color: #fff;
+        background-color: rgba(0,0,0,0.3);
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        backdrop-filter: blur(4px);
+    }
+    .swiper-button-next:after, .swiper-button-prev:after {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .swiper-pagination-bullet-active {
+        background-color: #000;
+    }
+
+  </style>
+</head>
+<body>
+  <section data-bs-version="5.1" class="menu menu2 cid-428824" once="menu" id="menu-5-428824">
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                <span class="navbar-logo">
+                    <a href="#quienes-somos">
+                        <img src="images/logo-DPA.png" alt="Patagoniactiva" style="height: 4.3rem;">
+                    </a>
+                </span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-4" href="#quienes-somos">Drones Patagoniactiva</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+                    <li class="nav-item">
+                        <a class="nav-link link text-black display-4" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link link text-black display-4 dropdown-toggle" href="#" id="servicesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servicios</a>
+                        <div class="dropdown-menu" aria-labelledby="servicesDropdown">
+                            <a class="dropdown-item" href="inmobiliarias.html">Producciones</a>
+                            <a class="dropdown-item" href="agencias.html">Edicion & IA</a>
+                            <a class="dropdown-item" href="https://toursvirtuales.netlify.app/">Tours 360</a>
+                        </div>
+                    </li>
+                     <li class="nav-item">
+                          <a class="nav-link link text-black display-4" href="membresias.html">Membresías</a>
+                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link link text-black display-4" href="#contacts-2-426624">Contacto</a>
+                    </li>
+                </ul>
+                
+                <div class="navbar-buttons drone-section-btn">
+                    <a class="btn btn-primary display-4" href="#contacto">¡Vuela Alto!</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="hero-slider-section cid-429924" id="home-slider">
+    
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
+        
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <div class="carousel-inner">
+            
+            <div class="carousel-item active mbr-parallax-background">
+                <img class="jarallax-img" src="https://res.cloudinary.com/demo/image/fetch/f_auto,q_auto/https://images.unsplash.com/photo-1500382017468-9049fed747ef" alt="Paisaje Patagonia">
+                <div class="hero-overlay"></div>
+            </div>
+
+            <div class="carousel-item mbr-parallax-background">
+                <img class="jarallax-img" src="
