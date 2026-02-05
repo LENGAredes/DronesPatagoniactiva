@@ -18,53 +18,62 @@
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap&display=swap"></noscript>
   <link rel="stylesheet" href="css/edit420.css" type="text/css">
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 <style>
-    /* --- ESTILOS DEL SLIDER DE INICIO --- */
+    /* --- ESTILOS DEL SLIDER DE INICIO CON PARALLAX --- */
     .hero-slider-section {
         position: relative;
-        height: 100vh;
+        height: 100vh; /* Ocupa toda la pantalla */
         min-height: 600px;
         overflow: hidden;
         padding: 0;
         background-color: #000;
+        /* CAMBIO 1: FORZAR BORDES CUADRADOS */
+        border-radius: 0 !important; 
     }
 
+    /* El carrusel ocupa todo el alto */
     #heroCarousel, .carousel-inner, .carousel-item {
         height: 100%;
         width: 100%;
+        /* Importante para que el parallax funcione dentro */
         position: relative;
         z-index: 0; 
+        /* CAMBIO 1: ASEGURAR BORDES CUADRADOS EN ITEMS */
+        border-radius: 0 !important;
     }
     
+    /* Estilos para la imagen parallax dentro del carrusel */
     .carousel-item .jarallax-img {
         object-fit: cover;
         width: 100%;
-        height: 100% !important; 
+        /* Altura automática para permitir que jarallax la haga más alta y scrollee */
+        height: auto !important; 
         min-height: 100%;
     }
 
+
+    /* Capa oscura sobre las fotos para que se lea el texto */
     .hero-overlay {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.4);
+        background-color: rgba(0, 0, 0, 0.4); /* 40% de oscuridad */
         z-index: 1;
     }
 
+    /* Contenedor del Texto (Título y botones) */
     .hero-content-layer {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        z-index: 10;
+        z-index: 10; /* Por encima de las fotos y el overlay */
         display: flex;
-        align-items: center;
+        align-items: center; /* Centrado vertical */
         justify-content: center;
         pointer-events: none;
     }
@@ -76,6 +85,7 @@
         padding: 0 15px;
     }
 
+    /* Puntos (Dots) Minimalistas */
     .carousel-indicators {
         bottom: 40px;
         z-index: 20;
@@ -97,7 +107,7 @@
         transform: scale(1.3);
     }
 
-    /* --- ESTILOS GENERALES --- */
+    /* --- ESTILOS ORIGINALES --- */
     .service-features-list {
         list-style: none;
         padding-left: 0;
@@ -116,6 +126,22 @@
         position: absolute;
         left: 0;
         font-weight: bold;
+    }
+    
+    .gallery-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0,0,0,0.7);
+        color: white;
+        padding: 15px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .grid-item:hover .gallery-overlay {
+        opacity: 1;
     }
     
     .testimonial-item {
@@ -144,100 +170,24 @@
         background-color: rgba(255,255,255,0.95);
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
-
-    /* --- ESTILOS ESPECIFICOS DE LA NUEVA GALERIA --- */
-    /* Aseguramos que la sección tenga altura y no colapse */
-    .swiper-gallery-section {
-        padding: 4rem 0;
-        background-color: #ffffff;
-        display: block !important; /* Forzar bloque para evitar conflictos */
-        position: relative;
-        overflow: hidden;
-    }
     
-    /* El contenedor del swiper debe tener ancho definido */
-    .mySwiper {
-        width: 100%;
-        padding-top: 20px;
-        padding-bottom: 50px; /* Espacio para la paginación abajo */
-    }
-
-    .swiper-slide {
-        background-position: center;
-        background-size: cover;
-        width: 300px;
-        height: 400px; /* Altura fija para las tarjetas */
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        position: relative;
-    }
-
-    .swiper-slide img {
-        display: block;
-        width: 100%;
+    .service-card {
         height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-    }
-
-    .swiper-slide:hover img {
-        transform: scale(1.1);
-    }
-
-    /* Overlay degradado y texto */
-    .swiper-slide-content {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        padding: 20px;
-        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-        color: white;
-        z-index: 10;
-    }
-
-    .swiper-slide-content h3 {
-        font-family: 'Inter Tight', sans-serif;
-        font-weight: 700;
-        font-size: 1.5rem;
-        margin-bottom: 5px;
-        color: #fff;
-    }
-
-    .swiper-slide-content p {
-        font-family: 'Inter Tight', sans-serif;
-        font-size: 0.9rem;
-        margin: 0;
-        color: rgba(255,255,255,0.9);
-    }
-
-    /* Botones de navegación */
-    .swiper-button-next, .swiper-button-prev {
-        color: #fff;
-        background: rgba(0,0,0,0.5);
-        border-radius: 50%;
-        width: 44px;
-        height: 44px;
-        transition: background 0.3s;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease;
     }
     
-    .swiper-button-next:hover, .swiper-button-prev:hover {
-        background: rgba(0,0,0,0.8);
-    }
-
-    .swiper-button-next:after, .swiper-button-prev:after {
-        font-size: 20px;
+    .service-card:hover {
+        transform: translateY(-10px);
     }
     
-    .swiper-pagination-bullet-active {
-        background-color: #000;
+    .service-card .card-body {
+        flex-grow: 1;
     }
-
   </style>
 </head>
 <body>
-  
   <section data-bs-version="5.1" class="menu menu2 cid-428824" once="menu" id="menu-5-428824">
     <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
         <div class="container">
@@ -285,37 +235,47 @@
             </div>
         </div>
     </nav>
-  </section>
+</section>
 
-  <section class="hero-slider-section cid-429924" id="home-slider">
-    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
+<section class="hero-slider-section cid-429924" id="home-slider">
+    
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+        
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
+
         <div class="carousel-inner">
+            
             <div class="carousel-item active mbr-parallax-background">
-                <img class="jarallax-img" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef" alt="Paisaje Patagonia">
+                <img class="jarallax-img" src="https://res.cloudinary.com/demo/image/fetch/f_auto,q_auto/https://images.unsplash.com/photo-1500382017468-9049fed747ef" alt="Paisaje Patagonia">
                 <div class="hero-overlay"></div>
             </div>
+
             <div class="carousel-item mbr-parallax-background">
-                <img class="jarallax-img" src="https://images.unsplash.com/photo-1600596542815-2a4b9714e6fd" alt="Propiedades Exclusivas">
+                <img class="jarallax-img" src="https://res.cloudinary.com/demo/image/fetch/f_auto,q_auto/https://images.unsplash.com/photo-1600596542815-2a4b9714e6fd" alt="Propiedades Exclusivas">
                 <div class="hero-overlay"></div>
             </div>
+
             <div class="carousel-item mbr-parallax-background">
-                <img class="jarallax-img" src="/https://images.unsplash.com/photo-1473968512647-3e447244af8f" alt="Tecnología de Punta">
+                <img class="jarallax-img" src="https://res.cloudinary.com/demo/image/fetch/f_auto,q_auto/https://images.unsplash.com/photo-1473968512647-3e447244af8f" alt="Tecnología de Punta">
                 <div class="hero-overlay"></div>
             </div>
+
         </div>
     </div>
+
     <div class="hero-content-layer container-fluid">
         <div class="row w-100">
             <div class="content-wrap col-12 col-md-12">
                 <h1 class="drone-section-title drone-fonts-style drone-white mb-4 display-1">
                     <strong>Patagoniactiva</strong>
                 </h1>
+                
                 <p class="drone-fonts-style drone-text drone-white mb-4 display-7">Transforma la forma de mostrar tus proyectos o propiedades con nueva tecnología</p>
+                
                 <div class="drone-section-btn">
                     <a class="btn btn-white-outline display-7" href="#pricing-cards-1-420042">Ver Servicios</a>
                     <a class="btn btn-white display-7 ml-3" href="#quienes-somos">Conócenos</a>
@@ -323,10 +283,13 @@
             </div>
         </div>
     </div>
-  </section>
 
-  <section data-bs-version="5.1" class="features19 cid-42101024" id="features-27-42101024">
+</section>
+<section data-bs-version="5.1" class="features19 cid-42101024" id="features-27-42101024">
     <div class="container">
+        <div class="row justify-content-center">
+            
+        </div>
         <div class="row">
             <div class="item features-without-image col-12 col-lg-4 item-mb active">
                 <div class="item-wrapper">
@@ -367,11 +330,12 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
-  </section>
+</section>
 
-  <section data-bs-version="5.1" class="article01 cid-421142" id="about-us-1-421142">
+<section data-bs-version="5.1" class="article01 cid-421142" id="about-us-1-421142">
     <div class="container">
         <div class="row justify-content-center">
             <div class="card col-md-12 col-lg-12">
@@ -384,30 +348,34 @@
                             <img src="images/ciudadnoche.jpg" alt="Patagoniactiva">
                         </div>
                     </div>
+
                     <div class="card-box align-left mb-3 card-content-text" id="quienes-somos">
                         <h4 class="card-title drone-fonts-style drone-white mb-0 display-5">
                             <strong>¿Quiénes Somos?</strong>
                         </h4>
-                        <p class="drone-text drone-fonts-style mt-3 mb-0 display-7">
-                            Somos Drones Patagoniactiva y entendemos el lenguaje del sector inmobiliario. Crecimos combinando la pasión por el vuelo, la tecnología y el sector inmobiliario con un solo objetivo: dar a <strong>agentes</strong> y <strong>desarrolladores</strong> el poder de mostrar sus proyectos desde una perspectiva única e irresistible.
-                        </p>
-                        <p class="drone-text drone-fonts-style mt-3 mb-0 display-7">
-                            Te ofrecemos la tranquilidad de tener un equipo de producción constante. Nos podemos encargar de todo: capturas aéreas, recorridos de interior y Tours Virtuales 360°. Nos ocupamos de lo visual para que vos puedas ocuparte de lo más importante: cerrar ventas y hacer crecer tu cartera.
-                        </p>
-                        <p class="drone-text drone-fonts-style mt-3 mb-0 display-7">
-                            ¿Listo para cambiar la perspectiva de tu negocio? Drones Patagoniactiva puede ser el impulso que necesitas. No solo hacemos contenido, creamos el escenario perfecto para tu próxima venta.
-                        </p>
-                        <div class="drone-section-btn mt-4">
-                             <a href="#pricing-cards-1-420042" class="btn btn-primary display-7">Conoce nuestros servicios</a>
-                        </div>
+                     <p class="drone-text drone-fonts-style mt-3 mb-0 display-7">
+    Somos Drones Patagoniactiva y entendemos el lenguaje del sector inmobiliario. Crecimos combinando la pasión por el vuelo, la tecnología y el sector inmobiliario con un solo objetivo: dar a <strong>agentes</strong> y <strong>desarrolladores</strong> el poder de mostrar sus proyectos desde una perspectiva única e irresistible.
+</p>
+
+<p class="drone-text drone-fonts-style mt-3 mb-0 display-7">
+    Te ofrecemos la tranquilidad de tener un equipo de producción constante. Nos podemos encargar de todo: capturas aéreas, recorridos de interior y Tours Virtuales 360°. Nos ocupamos de lo visual para que vos puedas ocuparte de lo más importante: cerrar ventas y hacer crecer tu cartera.
+</p>
+
+<p class="drone-text drone-fonts-style mt-3 mb-0 display-7">
+    ¿Listo para cambiar la perspectiva de tu negocio? Drones Patagoniactiva puede ser el impulso que necesitas. No solo hacemos contenido, creamos el escenario perfecto para tu próxima venta.
+</p>
+<div class="drone-section-btn mt-4">
+                 <a href="#pricing-cards-1-420042" class="btn btn-primary display-7">Conoce nuestros servicios</a>
+               </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
-  </section>
+</section>
 
-  <section data-bs-version="5.1" class="pricing1 cid-420042" id="pricing-cards-1-420042">
+<section data-bs-version="5.1" class="pricing1 cid-420042" id="pricing-cards-1-420042">
     <div class="container-fluid" id="inmobiliaria">
         <div class="row justify-content-center">
             <div class="col-12 content-head">
@@ -423,6 +391,7 @@
         </div>
 
         <div class="row">
+            
             <div class="item features-without-image col-12 col-md-6 col-lg-3 item-mb active">
                 <div class="item-wrapper">
                     <div class="item-head">
@@ -531,73 +500,55 @@
                     </div>
                 </div>
             </div>
+
         </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="gallery07 cid-423324" id="gallery-14-423324">
+    <div class="container-fluid gallery-wrapper">
+      <div class="row justify-content-center">
+        <div class="col-12 content-head">
+          <h4 class="drone-section-title drone-fonts-style align-center mb-4 display-2">
+            <strong>Nuestra Patagonia</strong>
+          </h4>
+          <p class="drone-fonts-style align-center display-7">
+            Un paraíso donde crecer con la naturaleza
+          </p>
+        </div>
+      </div>
+      <div class="grid-container">
+        <div class="grid-container-3 moving-left">
+          <div class="grid-item">
+            <a>
+              <img src="images/gallery-2.jpg" alt="Servicio para inmobiliarias">
+              
+            </a>
+          </div>
+          <div class="grid-item">
+            <a>
+              <img src="images/Camion.jpg" alt="Servicio para marketing">
+              
+            </a>
+          </div>
+          <div class="grid-item">
+            <a>
+              <img src="images/gallery-4.jpg" alt="Servicio para particulares">
+              
+            </a>
+          </div>
+          <div class="grid-item">
+            <a>
+              <img src="images/bosque.jpg" alt="Tour virtual 360°">
+              
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="swiper-gallery-section cid-423324" id="gallery-14-423324" style="display: block !important;">
-    <div class="container-fluid">
-        <div class="row justify-content-center mb-4">
-            <div class="col-12 text-center">
-                <h4 class="drone-section-title drone-fonts-style display-2 mb-3">
-                    <strong>Nuestra Patagonia</strong>
-                </h4>
-                <p class="drone-fonts-style display-7">
-                    Un paraíso donde crecer con la naturaleza
-                </p>
-            </div>
-        </div>
-
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                
-                <div class="swiper-slide">
-                    <img src="images/gallery-2.jpg" alt="Inmobiliarias">
-                    <div class="swiper-slide-content">
-                        <h3>Real Estate</h3>
-                        <p>Venta de propiedades</p>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <img src="images/Camion.jpg" alt="Logística">
-                    <div class="swiper-slide-content">
-                        <h3>Logística</h3>
-                        <p>Seguimiento de flota</p>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <img src="images/gallery-4.jpg" alt="Obras">
-                    <div class="swiper-slide-content">
-                        <h3>Desarrollos</h3>
-                        <p>Avance de obra</p>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <img src="images/bosque.jpg" alt="Turismo">
-                    <div class="swiper-slide-content">
-                        <h3>Turismo</h3>
-                        <p>Experiencias 360°</p>
-                    </div>
-                </div>
-                 <div class="swiper-slide">
-                    <img src="images/foto-2.jpg" alt="Edicion">
-                    <div class="swiper-slide-content">
-                        <h3>Edición</h3>
-                        <p>Post-Producción</p>
-                    </div>
-                </div>
-
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
-        </div>
-    </div>
-  </section>
-  <section data-bs-version="5.1" class="testimonials cid-testimonials" style="background-color: #f8f9fa;">
+<section data-bs-version="5.1" class="testimonials cid-testimonials" style="background-color: #f8f9fa;">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 content-head">
@@ -647,8 +598,9 @@
     </div>
   </section>
 
-  <section data-bs-version="5.1" class="features023 cid-uqi6GL61WA" id="metrics-1-uqi6GL61WA">
+<section data-bs-version="5.1" class="features023 cid-uqi6GL61WA" id="metrics-1-uqi6GL61WA">
     <div class="container">
+        
         <div class="row content-row justify-content-center">
             <div class="item features-without-image col-12 col-md-6 col-lg-4 item-mb">
                 <div class="item-wrapper">
@@ -659,6 +611,7 @@
                     <h4 class="card-title mbr-fonts-style display-5">
                         <strong>Proyectos Completados</strong>
                     </h4>
+                    
                 </div>
             </div>
             <div class="item features-without-image col-12 col-md-6 col-lg-4 item-mb">
@@ -670,6 +623,7 @@
                     <h4 class="card-title mbr-fonts-style display-5">
                         <strong>Satisfacción Garantizada</strong>
                     </h4>
+                    
                 </div>
             </div>
             <div class="item features-without-image col-12 col-md-6 col-lg-4 item-mb">
@@ -681,29 +635,33 @@
                     <h4 class="card-title mbr-fonts-style display-5">
                         <strong>Imágenes Capturadas</strong>
                     </h4>
+                    
                 </div>
             </div>
         </div>
     </div>
-  </section>
+</section>
 
-  <section data-bs-version="5.1" class="image02 cid-425524 drone-fullscreen drone-parallax-background" id="video-parallax-section" data-bg-video="https://www.youtube.com/embed/xJekP9d8Q8c?autoplay=1&loop=1&mute=1&start=70&playlist=xJekP9d8Q8c&controls=0&showinfo=0&autohide=1&allowfullscreen=true&mode=transparent">
-    <div class="drone-overlay" style="opacity: 0.5; background-color: rgb(0, 0, 0);"></div>
+<section data-bs-version="5.1" class="image02 cid-425524 drone-fullscreen drone-parallax-background" id="video-parallax-section" data-bg-video="https://www.youtube.com/embed/xJekP9d8Q8c?autoplay=1&loop=1&mute=1&start=70&playlist=xJekP9d8Q8c&controls=0&showinfo=0&autohide=1&allowfullscreen=true&mode=transparent">
+    <div class="drone-overlay" style="opacity: 0; background-color: rgb(0, 0, 0);"></div>
     <div class="container">
         <div class="row"></div>
     </div>
-  </section>
+</section>
+<section data-bs-version="5.1" class="gallery10 cid-uqi6GLb4IU" id="features-61-uqi6GLb4IU">
+  <div class="container-fluid">
 
-  <section data-bs-version="5.1" class="gallery10 cid-uqi6GLb4IU" id="features-61-uqi6GLb4IU">
-      <div class="container-fluid">
-          <div class="loop-container">
-            <div class="item display-1" data-linewords="Imágenes Aéreas Impactantes * Perspectivas Únicas * Rápido y Eficaz * Tecnología de Punta * Aumenta Ventas * Servicio Personalizado *" data-direction="-1" data-speed="0.05">☁️ Mejores ofertas ☁️ Varias formas de envio ☁️ Diseño a medida ☁️ Rapidez ☁️ Grabamos 24/7 ☁️ Buena energia</div>
-            <div class="item display-1" data-linewords="Imágenes Aéreas Impactantes * Perspectivas Únicas * Rápido y Eficaz * Tecnología de Punta * Aumenta Ventas * Servicio Personalizado *" data-direction="-1" data-speed="0.05">☁️ Best offers ☁️ Free delivery ☁️ Perfect design ☁️ Comfort ☁️ Support 24/7 ☁️ Vibes</div>
-          </div>
+      <div class="loop-container">
+        <div class="item display-1" data-linewords="Imágenes Aéreas Impactantes * Perspectivas Únicas * Rápido y Eficaz * Tecnología de Punta * Aumenta Ventas * Servicio Personalizado *" data-direction="-1" data-speed="0.05">☁️ Mejores ofertas ☁️ Varias formas de envio ☁️ Diseño a medida ☁️ Rapidez ☁️ Grabamos 24/7 ☁️ Buena energia</div>
+
+        <div class="item display-1" data-linewords="Imágenes Aéreas Impactantes * Perspectivas Únicas * Rápido y Eficaz * Tecnología de Punta * Aumenta Ventas * Servicio Personalizado *" data-direction="-1" data-speed="0.05">☁️ Best offers ☁️ Free delivery ☁️ Perfect design ☁️ Comfort ☁️ Support 24/7 ☁️ Vibes</div>
       </div>
-  </section>
+    
+  </div>
+</section>
 
-  <section data-bs-version="5.1" class="contacts02 map1 cid-426624" id="contacto">
+<section data-bs-version="5.1" class="contacts02 map1 cid-426624" id="contacto">
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 content-head">
@@ -711,6 +669,7 @@
                     <h3 class="drone-section-title drone-fonts-style align-center mb-0 display-2">
                         <strong>Contáctanos</strong>
                     </h3>
+                    
                 </div>
             </div>
         </div>
@@ -718,8 +677,10 @@
             <div class="card col-12 col-md-12 col-lg-6">
                 <div class="card-wrapper">
                     <div class="text-wrapper">
+                        
                        <ul class="list drone-fonts-style display-7" id="contacts-2-426624">
                             <li class="drone-text item-wrap">
+
                             <li class="drone-text item-wrap">
                             WhatsApp: 
                             <a href="https://wa.me/542944140120" class="text-black" target="_blank">+54 2944 140120</a>
@@ -728,23 +689,27 @@
                             Instagram:
                             <a href="http://www.instagram.com/drones.patagoniactiva" class="text-black">@Drones.patagoniactiva</a>                           
                             </li>
-                            <li class="drone-text item-wrap">                           
+               <li class="drone-text item-wrap">                           
                             Facebook:
                             <a href="https://www.facebook.com/drones.patagoniactiva" class="text-black">@Drones.patagoniactiva</a>                           
                             </li>
-                            <li class="drone-text item-wrap">                           
+               <li class="drone-text item-wrap">                           
                             Youtube:
                             <a href="https://www.youtube.com/@drones.patagoniactiva" class="text-black">@Drones.patagoniactiva</a>                           
                             </li>
+
                             <li class="drone-text item-wrap">                         
                             Dirección:
                             San Carlos de Bariloche, Argentina
                             </li>
+
                             <li class="drone-text item-wrap">
                             Horario Laboral:
                             Lun-Vie: 9am-6pm
                             </li>
                         </ul>
+                
+
                     </div>
                 </div>
             </div>
@@ -753,9 +718,8 @@
             </div>
         </div>
     </div>
-  </section>
-
-  <section data-bs-version="5.1" class="features035 cid-uqi6GLaNOK" id="call-to-action-11-uqi6GLaNOK">
+</section>
+<section data-bs-version="5.1" class="features035 cid-uqi6GLaNOK" id="call-to-action-11-uqi6GLaNOK">
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-9 active">
@@ -772,9 +736,10 @@
             </div>
         </div>
     </div>
-  </section>
+</section>
 
-  <section data-bs-version="5.1" class="footer2 cid-427724" once="footers" id="footer-5-427724">
+
+<section data-bs-version="5.1" class="footer2 cid-427724" once="footers" id="footer-5-427724">
     <div class="container">
         <div class="row">
             <div class="col-12 col-lg-6 center mt-2 mb-3">
@@ -808,53 +773,13 @@
             </div>
         </div>
     </div>
-  </section>
+</section>
 
-  <script src="bootstrap/js/bootstrap.bundle.min420.js"></script>
-  <script src="parallax/jarallax420.js"></script>
+  <script src="bootstrap/js/bootstrap.bundle.min420.js"></script><script src="parallax/jarallax420.js"></script>
   <script src="ytplayer/index420.js"></script>
   <script src="dropdown/js/navbar-dropdown420.js"></script>
   <script src="vimeoplayer/player420.js"></script>
   <script src="scrollgallery/scroll-gallery420.js"></script>
   <script src="theme/js/script420.js"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Solo inicia si el elemento existe
-        if(document.querySelector('.mySwiper')) {
-            var swiper = new Swiper(".mySwiper", {
-                slidesPerView: 1, 
-                spaceBetween: 30,
-                loop: true,
-                centeredSlides: true,
-                autoplay: {
-                    delay: 2500,
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
-                breakpoints: {
-                    640: {
-                        slidesPerView: 2,
-                        spaceBetween: 20,
-                        centeredSlides: false
-                    },
-                    1024: {
-                        slidesPerView: 3,
-                        spaceBetween: 30,
-                        centeredSlides: false
-                    }
-                }
-            });
-        }
-    });
-  </script>
 </body>
 </html>
