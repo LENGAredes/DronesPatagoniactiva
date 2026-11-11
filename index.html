@@ -75,9 +75,24 @@
   <link rel="stylesheet" href="theme/css/style420.css">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap&display=swap"></noscript>
-  <link rel="stylesheet" href="css/edit420.css" type="text/css">
+  <link rel="stylesheet" href="css/edit420.css?v=3" type="text/css">
 
 <style>
+    /* Blindaje contra desborde horizontal en móviles (iOS Safari / Chrome Android) */
+    html, body {
+        overflow-x: hidden !important;
+        max-width: 100% !important;
+        width: 100%;
+    }
+    section,
+    .gallery10,
+    .cid-uqi6GLb4IU,
+    .cid-uqi6GLb4IU .container-fluid,
+    .cid-423324,
+    #image-13-425524 {
+        overflow-x: hidden !important;
+        max-width: 100%;
+    }
     /* Estilos para integración */
     .service-features-list {
         list-style: none;
@@ -402,7 +417,7 @@
 
                         <div class="proptech-highlight">
                             <p class="drone-text drone-fonts-style mb-0 display-7" style="font-size: 1.15rem;">
-                                🚀 <strong>ADN PropTech e Inmobiliario:</strong> Además de liderar Drones Patagoniactiva, soy el creador de <a href="https://calculahoy.com" target="_blank" rel="noopener">CalculaHoy.com</a>, una nueva plataforma web de herramientas financieras y cálculo de alquileres (ICL, IPC, UVA) pensada para agentes inmobiliarios, propietarios e inquilinos en la Argentina. Conocemos exactamente qué busca ver un inversor antes de comprar.
+                                🚀 <strong>ADN PropTech e Inmobiliario:</strong> Además de liderar Drones Patagoniactiva, soy el creador de <a href="https://calculahoy.com" target="_blank" rel="noopener">CalculaHoy.com</a>, una nueva plataforma web para el mercado inmobiliario argentino que destaca por su potente <strong>Visor Catastral interactivo</strong> junto con herramientas financieras y de cálculo de alquileres (ICL, IPC, UVA). Conocemos exactamente cómo analizar un lote y qué busca ver un inversor antes de comprar.
                             </p>
                         </div>
 
@@ -898,7 +913,7 @@
   <script src="dropdown/js/navbar-dropdown420.js"></script>
   <script src="vimeoplayer/player420.js"></script>
   <script src="scrollgallery/scroll-gallery420.js"></script>
-  <script src="theme/js/script420.js?v=2"></script>
+  <script src="theme/js/script420.js?v=3"></script>
   <script>
     // Fuerza el arranque inmediato del video al cargar la página (y al hacer scroll como respaldo)
     (function() {
